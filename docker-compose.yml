@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-local
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_DATABASE: trade_db
+      MYSQL_USER: trade_user
+      MYSQL_PASSWORD: trade_pass
+    ports:
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password --local-infile=1
+
+  metabase:
+    image: metabase/metabase
+    container_name: metabase-local
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql

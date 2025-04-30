@@ -1,0 +1,7 @@
+docker run --name mysql-local \
+  -e MYSQL_ROOT_PASSWORD=my-secret-pw \
+  -e MYSQL_DATABASE=trade_db \
+  -e MYSQL_USER=trade_user \
+  -e MYSQL_PASSWORD=trade_pass \
+  -p 3306:3306 \
+  -d mysql:8.0
